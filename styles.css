@@ -50,6 +50,11 @@
 	color: var(--color-white);
 }
 
+.holberton_school-icon-check {
+  font-size: 36px;
+  padding: 1.8rem;
+}
+
 .display-4 {
 	color: white;
 }

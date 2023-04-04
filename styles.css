@@ -50,11 +50,6 @@
 	color: var(--color-white);
 }
 
-.holberton_school-icon-check {
-  font-size: 36px;
-  padding: 1.8rem;
-}
-
 .display-4 {
 	color: white;
 }
@@ -94,7 +89,6 @@
 .carousel-control-next-icon {
     background-image: url("./images/arrow_white_right.png");
 }
-
 
 .loader {
     border: 10px solid #f3f3f3;
@@ -148,4 +142,22 @@
   width: 29px;
   height: 62px;
   background-color:rgba(0, 0, 0, 0.0);
+}
+
+.card-img-top {
+  position: relative;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: auto;
+}
+
+.card-img-top img {
+  max-width: 100%;
+  height: auto;
 }

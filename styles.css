@@ -116,7 +116,6 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Pre-pre-LD */
 .dropdown-item a:hover {
 	color: #C271FF !important;
 }

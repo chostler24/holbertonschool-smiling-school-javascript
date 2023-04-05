@@ -4,14 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		url: 'https://smileschool-api.hbtn.info/quotes',
 		method: 'GET',
 		success: function (data) {
-			// console.log('AJAX success'); // AJAX success
-			// console.log(data); // (2) [{...}, {...}]
 			const quotes = data[0];
-			// console.log(`Quotes: ${quotes}`); // Quotes: [object Object]
 			const carousel = $('#testimonial');
-			// console.log(`Carousel: ${carousel}`); // Quotes: [object Object]
 
-			// loop through each quote and create a carousel item
 			data.forEach(function createCard(quote, index) {
 				// console.log(quote);
 				const item = $('<div>').addClass('carousel-item px-5');
@@ -24,30 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
 				const name = $('<p>').addClass('font-weight-bold pl-2 pt-2 mb-1 align-self-start').text(quote['name']);
 				const occupation = $('<cite>').addClass('pl-2 align-self-start').text(quote['title']);
 
-				// add content to carousel item
 				content.append(text, name, occupation);
 				helper.append(avatar, content);
 				item.append(helper);
 				carousel.append(item);
 
-				// set first carousel item as active
 				if (index === 0) {
 					item.addClass('active');
 					// console.log('active');
 				}
 			});
 
-			// remove loader and show carousel
 			$('#testimonialLoader').remove();
 			$('.testimonialCarousel').removeClass('d-none');
 		},
 		error: function () {
-			// handle error
 			console.log('Error fetching quotes');
 		}
 	});
 
-	// popular videos
 	$.ajax({
 		url: "https://smileschool-api.hbtn.info/popular-tutorials",
 		type: "GET",
@@ -55,12 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		beforeSend: function () {
 			// show loader
 		},
-		// handle success response
 		success: function loadContent(data) {
-
-			// Remove any existing content
-
-			// Add each tutorial card to the section
 			data.forEach((tutorial) => {
 				// console.log(tutorial);
 				$('#popular-tutorials-section').append(
@@ -94,21 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			// handle error response
 		},
 		complete: function () {
-			// make first slide active and disable automatic sliding
 			$('#tutorial-1').addClass('active');
 			$('#carousel-popular').attr('data-interval', false);
-
-			// modify number of slides that are displayed at a time
 			$('#carousel-popular').attr('data-ride', 'carousel').find('.carousel-item').removeClass('col-12 col-sm-6 col-md-4 col-lg-3').addClass('col-12 col-md-6 col-lg-4');
 
-
-			// remove loader
 			$('#tutorialLoader').remove();
 			$('#carousel-popular-controls').removeClass('d-none');
 		}
 	});
 
-	// latest videos
 	$.ajax({
 		url: "https://smileschool-api.hbtn.info/latest-videos",
 		type: "GET",
@@ -116,12 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		beforeSend: function () {
 			// show loader
 		},
-		// handle success response
 		success: function loadContent(data) {
-
-			// Remove any existing content
-
-			// Add each tutorial card to the section
 			data.forEach((video) => {
 				// console.log(video);
 				$('#latest-tutorials-section').append(
@@ -155,21 +129,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			// handle error response
 		},
 		complete: function () {
-			// make first slide active and disable automatic sliding
 			$('#video-1').addClass('active');
 			$('#carousel-latest').attr('data-interval', false);
-
-			// modify number of slides that are displayed at a time
 			$('#carousel-latest').attr('data-ride', 'carousel').find('.carousel-item').removeClass('col-12 col-sm-6 col-md-4 col-lg-3').addClass('col-12 col-md-6 col-lg-4');
 
-
-			// remove loader
 			$('#latestLoader').remove();
 			$('#carousel-latest-controls').removeClass('d-none');
 		}
 	});
 
-	// courses
 	$.ajax({
 		url: "https://smileschool-api.hbtn.info/courses",
 		type: "GET",
@@ -178,24 +146,22 @@ document.addEventListener('DOMContentLoaded', function () {
 			const sorts = response.sorts;
 			const courses = response.courses;
 
-			// loop through topics
 			topics.forEach(topic => {
 				// console.log(topic);
 				$('#topicDropDown').append(
 					`<li class="dropdown-item">
-						<a href="#" class="text-dark" style="text-decoration: none;">
+						<a href="#" class="text-dark" style="text-decoration: none;" onclick="topicSelect(this)">
 							${toStandardString(topic)}
 						</a>
 					</li>`
 				);
 			});
 
-			// loop through sorts
 			sorts.forEach(sort => {
 				// console.log(topic);
 				$('#sorts').append(
 					`<li class="dropdown-item">
-						<a href="#" class="text-dark" style="text-decoration: none;">
+						<a href="#" class="text-dark" style="text-decoration: none;" onclick="sortSelect(this)">
 							${toStandardString(sort)}
 						</a>
 					</li>`
@@ -210,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 })
 
-// snake to standard string
 function toStandardString(snakeCaseString) {
 	let words = snakeCaseString.split('_');
 	for (let i = 0; i < words.length; i++) {
@@ -219,7 +184,6 @@ function toStandardString(snakeCaseString) {
 	return words.join(' ');
 }
 
-// star rating function
 function stars(rating) {
 	let stars = '';
 	for (let i = 1; i <= 5; i++) {
@@ -232,9 +196,7 @@ function stars(rating) {
 	return stars;
 }
 
-// load videos function
 function loadVideos(courses) {
-	// loop through courses
 	courses.forEach(video => {
 		// console.log(course);
 		$('#courseVideos').append(
@@ -263,3 +225,11 @@ function loadVideos(courses) {
 		)
 	});
 }
+
+function topicSelect(topic) {
+	// content
+};
+
+function sortSelect(sort) {
+	// content
+};
